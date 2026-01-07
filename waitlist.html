@@ -558,7 +558,7 @@
         const SUPABASE_URL = 'https://lugkjovwjztsbpzdweew.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1Z2tqb3Z3anp0c2JwemR3ZWV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3OTgyNDQsImV4cCI6MjA4MzM3NDI0NH0.Pf10g9ODUMNb63lxZM6HOD5DzgTyDwHSlB3mI0iqhb8';
 
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         const form = document.getElementById('waitlistForm');
         const successMessage = document.getElementById('successMessage');
@@ -578,7 +578,7 @@
 
             try {
                 // Insert email into Supabase waitlist table
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('waitlist')
                     .insert([{ email: email }]);
 
